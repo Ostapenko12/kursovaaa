@@ -2,123 +2,121 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
-#include <locale.h>
 using namespace std;
 
 int rollDice() {
-    return rand() % 6 + 1;
+return rand() % 6 + 1;
 }
 
 void displayRules() {
-    cout << "Правила гри \"Кістки\":" << endl;
-    cout << "1. Гравець називає будь-яке число від 2 до 12 та ставку, яку він робить у цей хід." << endl;
-    cout << "2. Програма генерує два випадкові кидки кубика та обчислює їх суму." << endl;
-    cout << "3. Якщо сума чисел менше 7 і гравець задумав число менше 7, він виграє зроблену ставку." << endl;
-    cout << "4. Якщо сума чисел більше 7 і гравець задумав число більше 7, він також виграє зроблену ставку." << endl;
-    cout << "5. Якщо гравець вгадав суму чисел, він отримує вчетверо більше очок, ніж зроблена ставка." << endl;
-    cout << "6. Ставка програна, якщо немає жодної з описаних ситуацій." << endl;
+cout << "РџСЂР°РІРёР»Р° РіСЂРё \"РљС–СЃС‚РєРё\":" << endl;
+cout << "1. Р“СЂР°РІРµС†СЊ РЅР°Р·РёРІР°С” Р±СѓРґСЊ-СЏРєРµ С‡РёСЃР»Рѕ РІС–Рґ 2 РґРѕ 12 С‚Р° СЃС‚Р°РІРєСѓ, СЏРєСѓ РІС–РЅ СЂРѕР±РёС‚СЊ Сѓ С†РµР№ С…С–Рґ." << endl;
+cout << "2. РџСЂРѕРіСЂР°РјР° РіРµРЅРµСЂСѓС” РґРІР° РІРёРїР°РґРєРѕРІС– РєРёРґРєРё РєСѓР±РёРєР° С‚Р° РѕР±С‡РёСЃР»СЋС” С—С… СЃСѓРјСѓ." << endl;
+cout << "3. РЇРєС‰Рѕ СЃСѓРјР° С‡РёСЃРµР» РјРµРЅС€Рµ 7 С– РіСЂР°РІРµС†СЊ Р·Р°РґСѓРјР°РІ С‡РёСЃР»Рѕ РјРµРЅС€Рµ 7, РІС–РЅ РІРёРіСЂР°С” Р·СЂРѕР±Р»РµРЅСѓ СЃС‚Р°РІРєСѓ." << endl;
+cout << "4. РЇРєС‰Рѕ СЃСѓРјР° С‡РёСЃРµР» Р±С–Р»СЊС€Рµ 7 С– РіСЂР°РІРµС†СЊ Р·Р°РґСѓРјР°РІ С‡РёСЃР»Рѕ Р±С–Р»СЊС€Рµ 7, РІС–РЅ С‚Р°РєРѕР¶ РІРёРіСЂР°С” Р·СЂРѕР±Р»РµРЅСѓ СЃС‚Р°РІРєСѓ." << endl;
+cout << "5. РЇРєС‰Рѕ РіСЂР°РІРµС†СЊ РІРіР°РґР°РІ СЃСѓРјСѓ С‡РёСЃРµР», РІС–РЅ РѕС‚СЂРёРјСѓС” РІС‡РµС‚РІРµСЂРѕ Р±С–Р»СЊС€Рµ РѕС‡РѕРє, РЅС–Р¶ Р·СЂРѕР±Р»РµРЅР° СЃС‚Р°РІРєР°." << endl;
+cout << "6. РЎС‚Р°РІРєР° РїСЂРѕРіСЂР°РЅР°, СЏРєС‰Рѕ РЅРµРјР°С” Р¶РѕРґРЅРѕС— Р· РѕРїРёСЃР°РЅРёС… СЃРёС‚СѓР°С†С–Р№." << endl;
 }
 
 void displayStatistics(const vector<string>& players, const vector<int>& scores) {
-    cout << "Статистика результатів:" << endl;
-    for (int i = 0; i < players.size(); i++) {
-        cout << players[i] << ": " << scores[i] << " очок" << endl;
-    }
+cout << "РЎС‚Р°С‚РёСЃС‚РёРєР° СЂРµР·СѓР»СЊС‚Р°С‚С–РІ:" << endl;
+for (int i = 0; i < players.size(); i++) {
+cout << players[i] << ": " << scores[i] << " РѕС‡РѕРє" << endl;
+}
 }
 
 void saveResults(const vector<string>& players, const vector<int>& scores) {
-    // Реалізуйте код для збереження результатів гравців у файл
-    cout << "Результати були збережені." << endl;
+// Р РµР°Р»С–Р·СѓР№С‚Рµ РєРѕРґ РґР»СЏ Р·Р±РµСЂРµР¶РµРЅРЅСЏ СЂРµР·СѓР»СЊС‚Р°С‚С–РІ РіСЂР°РІС†С–РІ Сѓ С„Р°Р№Р»
+cout << "Р РµР·СѓР»СЊС‚Р°С‚Рё Р±СѓР»Рё Р·Р±РµСЂРµР¶РµРЅС–." << endl;
 }
 
 int main() {
-	setlocale(LC_CTYPE, "ukr");
-    srand(static_cast<unsigned int>(time(0)));
+srand(static_cast<unsigned int>(time(0)));
 
-    vector<string> players;
-    vector<int> scores;
+vector<string> players;
+vector<int> scores;
 
-    int currentPlayer = 0;
-    int totalPoints = 100;
+int currentPlayer = 0;
+int totalPoints = 100;
 
-    int choice;
-    do {
-        cout << "Меню:" << endl;
-        cout << "1. Додати гравця" << endl;
-        cout << "2. Почати гру" << endl;
-        cout << "3. Переглянути правила гри" << endl;
-        cout << "4. Переглянути статистику" << endl;
-        cout << "5. Зберегти результати" << endl;
-        cout << "6. Вихід" << endl;
-        cout << "Виберіть опцію: ";
-        cin >> choice;
+int choice;
+do {
+cout << "РњРµРЅСЋ:" << endl;
+cout << "1. Р”РѕРґР°С‚Рё РіСЂР°РІС†СЏ" << endl;
+cout << "2. РџРѕС‡Р°С‚Рё РіСЂСѓ" << endl;
+cout << "3. РџРµСЂРµРіР»СЏРЅСѓС‚Рё РїСЂР°РІРёР»Р° РіСЂРё" << endl;
+cout << "4. РџРµСЂРµРіР»СЏРЅСѓС‚Рё СЃС‚Р°С‚РёСЃС‚РёРєСѓ" << endl;
+cout << "5. Р—Р±РµСЂРµРіС‚Рё СЂРµР·СѓР»СЊС‚Р°С‚Рё" << endl;
+cout << "6. Р’РёС…С–Рґ" << endl;
+cout << "Р’РёР±РµСЂС–С‚СЊ РѕРїС†С–СЋ: ";
+cin >> choice;
 
-        switch (choice) {
-            case 1: {
-                string playerName;
-                cout << "Введіть ім'я гравця: ";
-                cin >> playerName;
-                players.push_back(playerName);
-                scores.push_back(totalPoints);
-                cout << "Гравець " << playerName << " був успішно доданий." << endl;
-                break;
-            }
-            case 2: {
-                if (players.empty()) {
-                    cout << "Додайте гравця перед початком гри." << endl;
-                    break;
-                }
+switch (choice) {
+case 1: {
+string playerName;
+cout << "Р’РІРµРґС–С‚СЊ С–Рј'СЏ РіСЂР°РІС†СЏ: ";
+cin >> playerName;
+players.push_back(playerName);
+scores.push_back(totalPoints);
+cout << "Р“СЂР°РІРµС†СЊ " << playerName << " Р±СѓРІ СѓСЃРїС–С€РЅРѕ РґРѕРґР°РЅРёР№." << endl;
+break;
+}
+case 2: {
+if (players.empty()) {
+cout << "Р”РѕРґР°Р№С‚Рµ РіСЂР°РІС†СЏ РїРµСЂРµРґ РїРѕС‡Р°С‚РєРѕРј РіСЂРё." << endl;
+break;
+}
 
-                int bet;
-                int targetNumber;
-                cout << "Введіть вашу ставку: ";
-                cin >> bet;
-                cout << "Введіть число, від 2 до 12, яке ви задумали: ";
-                cin >> targetNumber;
+int bet;
+int targetNumber;
+cout << "Р’РІРµРґС–С‚СЊ РІР°С€Сѓ СЃС‚Р°РІРєСѓ: ";
+cin >> bet;
+cout << "Р’РІРµРґС–С‚СЊ С‡РёСЃР»Рѕ, РІС–Рґ 2 РґРѕ 12, СЏРєРµ РІРё Р·Р°РґСѓРјР°Р»Рё: ";
+cin >> targetNumber;
 
-                int dice1 = rollDice();
-                int dice2 = rollDice();
-                int sum = dice1 + dice2;
+int dice1 = rollDice();
+int dice2 = rollDice();
+int sum = dice1 + dice2;
 
-                cout << "Кидок кубиків: " << dice1 << " + " << dice2 << " = " << sum << endl;
+cout << "РљРёРґРѕРє РєСѓР±РёРєС–РІ: " << dice1 << " + " << dice2 << " = " << sum << endl;
 
-                if ((sum < 7 && targetNumber < 7) || (sum > 7 && targetNumber > 7)) {
-                    cout << "Ви виграли ставку!" << endl;
-                    int pointsEarned = bet;
-                    if (sum == targetNumber) {
-                        pointsEarned *= 4;
-                        cout << "Ви вгадали суму чисел! Ви отримуєте " << pointsEarned << " очок!" << endl;
-                    }
-                    scores[currentPlayer] += pointsEarned;
-                } else {
-                    cout << "Ви програли ставку." << endl;
-                    scores[currentPlayer] -= bet;
-                }
-                currentPlayer = (currentPlayer + 1) % players.size();
-                break;
-            }
-            case 3: {
-                displayRules();
-                break;
-            }
-            case 4: {
-                displayStatistics(players, scores);
-                break;
-            }
-            case 5: {
-                saveResults(players, scores);
-                break;
-            }
-            case 6: {
-                cout << "Дякую за гру! До побачення!" << endl;
-                break;
-            }
-            default:
-                cout << "Невірний вибір. Спробуйте ще раз." << endl;
-        }
+if ((sum < 7 && targetNumber < 7) || (sum > 7 && targetNumber > 7)) {
+cout << "Р’Рё РІРёРіСЂР°Р»Рё СЃС‚Р°РІРєСѓ!" << endl;
+int pointsEarned = bet;
+if (sum == targetNumber) {
+pointsEarned *= 4;
+cout << "Р’Рё РІРіР°РґР°Р»Рё СЃСѓРјСѓ С‡РёСЃРµР»! Р’Рё РѕС‚СЂРёРјСѓС”С‚Рµ " << pointsEarned << " РѕС‡РѕРє!" << endl;
+}
+scores[currentPlayer] += pointsEarned;
+} else {
+cout << "Р’Рё РїСЂРѕРіСЂР°Р»Рё СЃС‚Р°РІРєСѓ." << endl;
+scores[currentPlayer] -= bet;
+}
+currentPlayer = (currentPlayer + 1) % players.size();
+break;
+}
+case 3: {
+displayRules();
+break;
+}
+case 4: {
+displayStatistics(players, scores);
+break;
+}
+case 5: {
+saveResults(players, scores);
+break;
+}
+case 6: {
+cout << "Р”СЏРєСѓСЋ Р·Р° РіСЂСѓ! Р”Рѕ РїРѕР±Р°С‡РµРЅРЅСЏ!" << endl;
+break;
+}
+default:
+cout << "РќРµРІС–СЂРЅРёР№ РІРёР±С–СЂ. РЎРїСЂРѕР±СѓР№С‚Рµ С‰Рµ СЂР°Р·." << endl;
+}
 
-        cout << endl;
-    } while (choice != 6);
+cout << endl;
+} while (choice != 6);
 
-    return 0;
+return 0;
 }
