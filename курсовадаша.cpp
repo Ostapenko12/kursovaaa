@@ -2,6 +2,8 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+#include <locale.h>
+
 using namespace std;
 
 int rollDice() {
@@ -31,6 +33,7 @@ cout << "Результати були збережені." << endl;
 }
 
 int main() {
+setlocale(LC_CTYPE, "ukr");  
 srand(static_cast<unsigned int>(time(0)));
 
 vector<string> players;
